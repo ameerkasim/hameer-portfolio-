@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Verify portfolio files exist
+        run: test -f index.html || (echo 'Portfolio ZIP has not been uploaded yet; refusing to publish an empty site.' && exit 1)
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload site
